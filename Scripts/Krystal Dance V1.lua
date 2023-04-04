@@ -47,7 +47,7 @@ local A = false
 local S = false
 local D = false
 -------------
-local m = Instance.new("Model",game.Players.LocalPlayer.Character.Dummy.Dummy) m.Name = "ModelParts"
+local m = Instance.new("Model",game.Players.LocalPlayer.Character) m.Name = "ModelParts"
 local miniweld = nil
 local rootpart = nil
 
