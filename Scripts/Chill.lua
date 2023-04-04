@@ -76,7 +76,7 @@ end)
 v.Shape = "Block"
 text.Text = "~»Chill Af«~"
 Player = game:GetService("Players").LocalPlayer
-Character = Player.Character.Dummy.Dummy
+Character = Player.Character
 PlayerGui = Player.PlayerGui
 Backpack = Player.Backpack
 Torso = Character.Torso
