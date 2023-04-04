@@ -4,7 +4,7 @@
 --\\====================================================//--
 
 print("> Running Abyss Eye by Shackluster")
-Game:GetService("Players").LocalPlayer.Character.Dummy.Dummy.Humanoid.Jump = true
+Game:GetService("Players").LocalPlayer.Character.Humanoid.Jump = true
 wait(0.5)
 
 Player = game:GetService("Players").LocalPlayer
