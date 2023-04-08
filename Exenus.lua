@@ -59,7 +59,7 @@ local Reanimate = Reanimation:CreateButton({
 
 local Scripts = Window:CreateTab("Scripts")
 
-local NoHatsSection = Scripts:CreateSection("-- [ No Hats Required ] --")
+local NoHatsSection = Scripts:CreateSection("-- [ No Hats ] --")
 local Gale = Scripts:CreateButton({
 	Name = "Gale",
 	Callback = function()
@@ -103,6 +103,14 @@ local NebulaGlitcher = Scripts:CreateButton({
 	end,
 })
 
+local OptionHatsSection = Scripts:CreateSection("-- [ Hats Optional ] --", true)
+local Chips = Scripts:CreateButton({
+	Name = "Chips (Pillow)",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Blukezz/Useless-Repo/main/Scripts/Chips.lua"))()
+	end,
+})
+
 local HatsSection = Scripts:CreateSection("-- [ Hats Required ] --", true)
 local NepV = Scripts:CreateButton({
 	Name = "Neptunion V (Demonic Sword)",
@@ -126,6 +134,10 @@ local AbyssEye = Scripts:CreateButton({
 ----
 
 local Changelogs = Window:CreateTab("Changelogs")
+local Update3 = Changelogs:CreateSection("4/8/23")
+local U3Change = Changelogs:CreateLabel("[ + ] Added chips.")
+local U3Change1 = Changelogs:CreateLabel("[ + ] Modified the reanimate.")
+local U3Change2 = Changelogs:CreateLabel("[ + ] Added a optional hats section.")
 local Update2 = Changelogs:CreateSection("4/4/23")
 local U2Change = Changelogs:CreateLabel("[ + ] Removed the need for mizt reanimate.")
 local U2Change1 = Changelogs:CreateLabel("[ + ] Added a reanimate page.")
