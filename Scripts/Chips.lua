@@ -1665,7 +1665,7 @@ mouse.KeyDown:connect(function(key)
 	end
 end)
 
-if game:GetService("Players").LocalPlayer.Character["Pillow"] then
+if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Pillow") then
 --// Credits to Mizt for this AMAZING alignment script :> //--
 local alignchar = game:GetService("Players").LocalPlayer.Character
 local hhat = alignchar['Pillow']
