@@ -1629,8 +1629,6 @@ mouse.KeyDown:connect(function(key)
 	if attack == false then
 		if key == "t" then
 			Taunt()
-		elseif key == "z" then
-			Gum()
 		elseif key == "x" then
 			OHHHHHHH()
 		elseif key == "c" then
