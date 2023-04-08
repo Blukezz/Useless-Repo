@@ -1,9 +1,3 @@
--- nebula's ezconvert
---[[
-PUT YOUR SCRIPTS BELOW HERE VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV	
-]]
-loadstring(game:HttpGet('https://raw.githubusercontent.com/GelatekWasTaken/GelatekV2/main/LoadLibrary.lua',true))()
---start here
 -----------------------
 --[[ Name : Chips ]]--
 --[[ Description : I think I found my specialty in scripts ]]--
@@ -13,10 +7,12 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/GelatekWasTaken/Gelat
 --Discord Creterisk#2958 
 -------------------------------------------------------
 
+print("> Running Chips by Creterisk")
+loadstring(game:HttpGet('https://raw.githubusercontent.com/GelatekWasTaken/GelatekV2/main/LoadLibrary.lua',true))()
+
 --Everything is Meaningless.....
 
 wait(1 / 60)
-
 
 local plr = game.Players.LocalPlayer
 local char = plr.Character
@@ -276,8 +272,10 @@ function Damage(Part, hit, minim, maxim, knockback, Type, Property, Delay, HitSo
 			end
 		end
 		if blocked == false then
+			h.Health = h.Health - Damage
 			ShowDamage((Part.CFrame * CFrame.new(0, 0, (Part.Size.Z / 2)).p + Vector3.new(0, 1.5, 0)), -Damage, 1.5, tors.BrickColor.Color)
 		else
+			h.Health = h.Health - (Damage / 2)
 			ShowDamage((Part.CFrame * CFrame.new(0, 0, (Part.Size.Z / 2)).p + Vector3.new(0, 1.5, 0)), -Damage, 1.5, tors.BrickColor.Color)
 		end
 		if Type == "Knockdown" then
@@ -1283,6 +1281,14 @@ NewInstance = function(instance,parent,properties)
 	end
 	return inst;
 end
+hum.MaxHealth = 1.0E298
+hum.Health = 1.0E298
+game:GetService("RunService"):BindToRenderStep("HOT", 0, function()
+  if hum.Health > 0.1 and hum.Health < 1.0E298 then
+    hum.MaxHealth = 1.0E298
+    hum.Health = 1.0E298
+  end
+end)
 -------------------------------------------------------
 --End Important Functions--
 -------------------------------------------------------
@@ -1400,7 +1406,6 @@ function HitboxFunction(Pose, lifetime, siz1, siz2, siz3, Radie, Min, Max, kb, a
   Hitboxpart.Anchored = true
   Hitboxpart.CFrame = Pose
   game:GetService("Debris"):AddItem(Hitboxpart, lifetime)
-  MagniDamage(Hitboxpart, Radie, Min, Max, kb, atype)
 end
 wait2 = false
 combo = 1
@@ -1624,6 +1629,8 @@ mouse.KeyDown:connect(function(key)
 	if attack == false then
 		if key == "t" then
 			Taunt()
+		elseif key == "z" then
+			Gum()
 		elseif key == "x" then
 			OHHHHHHH()
 		elseif key == "c" then
@@ -1658,13 +1665,49 @@ mouse.KeyDown:connect(function(key)
 	end
 end)
 
- 
+if game:GetService("Players").LocalPlayer.Character["Pillow"] then
+--// Credits to Mizt for this AMAZING alignment script :> //--
+local alignchar = game:GetService("Players").LocalPlayer.Character
+local hhat = alignchar['Pillow']
 
+local Count = 1
+function AlignCharacter(Part0,Part1,Position,Angle)
+    local AlignPos = Instance.new('AlignPosition', Part1); AlignPos.Name = "AliP_"..Count
+    AlignPos.ApplyAtCenterOfMass = true;
+    AlignPos.MaxForce = 5772000--67752;
+    AlignPos.MaxVelocity = math.huge/9e110;
+    AlignPos.ReactionForceEnabled = false;
+    AlignPos.Responsiveness = 200;
+    AlignPos.RigidityEnabled = false;
+    local AlignOri = Instance.new('AlignOrientation', Part1); AlignOri.Name = "AliO_"..Count
+    AlignOri.MaxAngularVelocity = math.huge/9e110;
+    AlignOri.MaxTorque = 5772000
+    AlignOri.PrimaryAxisOnly = false;
+    AlignOri.ReactionTorqueEnabled = false;
+    AlignOri.Responsiveness = 200;
+    AlignOri.RigidityEnabled = false;
+    local AttachmentA=Instance.new('Attachment',Part1); AttachmentA.Name = "AthP_"..Count
+    local AttachmentB=Instance.new('Attachment',Part0); AttachmentB.Name = "AthP_"..Count
+    local AttachmentC=Instance.new('Attachment',Part1); AttachmentC.Name = "AthO_"..Count
+    local AttachmentD=Instance.new('Attachment',Part0); AttachmentD.Name = "AthO_"..Count
+    AttachmentC.Orientation = Angle
+    AttachmentA.Position = Position
+    AlignPos.Attachment1 = AttachmentA;
+    AlignPos.Attachment0 = AttachmentB;
+    AlignOri.Attachment1 = AttachmentC;
+    AlignOri.Attachment0 = AttachmentD;
+    Count = Count + 1
+end
 
+hhat.Handle.AccessoryWeld:Destroy()
+AlignCharacter(hhat.Handle,alignchar.Chips.Part,Vector3.new(0,0,0),Vector3.new(90,0,90))
 
-
-
-
+for _,v in pairs(alignchar.Chips:GetChildren()) do
+	if v:IsA("BasePart") then
+		v.Transparency = 1
+	end
+end
+end
 -------------------------------------------------------
 --Start Animations--
 -------------------------------------------------------
@@ -1759,7 +1802,6 @@ while true do
 			end
 		end
 	end
-	hum.Name = "HUM"
 	hum.WalkSpeed = Speed
 	Music.SoundId = "rbxassetid://"..SONG
 	Music.Looped = true
