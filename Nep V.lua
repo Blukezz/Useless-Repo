@@ -1,3 +1,31 @@
+-- music
+local getsynasset = getsynasset or getcustomasset or function() warn("no getcustomasset/getsynasset") end
+
+function checkfolder(folder)
+    if not isfolder(folder) then
+        print("Creating directory workspace/"..folder)
+        makefolder(folder)
+    end
+end
+
+function checkfile(file, item)
+    if not isfile(file) then
+        print("Creating file workspace/"..file)
+        writefile(file, game:HttpGet(item))
+    end
+end
+
+checkfolder("Exenus")
+wait(0.1)
+checkfolder("Exenus/Music")
+wait(0.1)
+checkfile("Exenus/Music/NepV1.mp3", "https://raw.githubusercontent.com/Blukezz/Useless-Repo/main/Music/NepV1.mp3")
+wait(0.1)
+checkfile("Exenus/Music/NepV2.mp3", "https://raw.githubusercontent.com/Blukezz/Useless-Repo/main/Music/NepV2.mp3")
+wait(0.1)
+checkfile("Exenus/Music/NepV3.mp3", "https://raw.githubusercontent.com/Blukezz/Useless-Repo/main/Music/NepV3.mp3")
+wait(0.1)
+checkfile("Exenus/Music/NepV4.mp3", "https://raw.githubusercontent.com/Blukezz/Useless-Repo/main/Music/NepV4.mp3")
 ----- the hats name on explorer/dex (not name in catalog)
 local NoSound = false ----- sound or no sound (Background Music)
 local OldModel = true ----- don't put this on false.
@@ -5250,12 +5278,12 @@ ceuler = CFrame.fromEulerAnglesXYZ
 
 local muter = false
 local ORGID = 5801326053
-local ORVOL = 8
+local ORVOL = 1
 local ORPIT = 0.85
 local kan = Instance.new("Sound",char)
 kan.Volume = 0
 if not NoSound then
-	kan.Volume = 6
+	kan.Volume = 1
 end
 kan.TimePosition = 0
 kan.PlaybackSpeed = 1.01
@@ -7769,10 +7797,11 @@ end
 	if k == "2" and attack == false then
 		hum.WalkSpeed = 40
 		Speed = 40
-		kan.Pitch = 0.8
-		kan.SoundId = "rbxassetid://7999878400"
+		kan.Pitch = 1
+		kan.SoundId = getsynasset("Exenus/Music/NepV2.mp3")
 		BanishMode = 2
-			
+        kan.TimePosition = 48
+		
 		imgl2b.ImageColor3 = Color3.new(1, 0, 0)
 		imgl2.ImageColor3 = Color3.new(1, 0, 0)
 	end
@@ -7780,8 +7809,9 @@ end
 	if k == "1" and attack == false then
 		hum.WalkSpeed = 24
 		Speed = 24
-		kan.Pitch = 0.5
-		kan.SoundId = "rbxassetid://5409360995"
+		kan.Pitch = 1
+		kan.SoundId = getsynasset("Exenus/Music/NepV1.mp3")
+        kan.TimePosition = 0
 		BanishMode = 1
 			
 		imgl2b.ImageColor3 = Color3.new(0, 0.4, 0.9)
@@ -7791,8 +7821,9 @@ end
 	if k == "3" and attack == false then
 		hum.WalkSpeed = 13.8
 		Speed = 13.8
-		kan.Pitch = 0.6
-		kan.SoundId = "rbxassetid://5410083226"
+		kan.Pitch = 0.65
+		kan.SoundId = getsynasset("Exenus/Music/NepV3.mp3")
+        kan.TimePosition = 10
 		BanishMode = 4
 			
 		imgl2b.ImageColor3 = Color3.new(0.1, 0.1, 0.1)
@@ -7802,8 +7833,9 @@ end
 	if k == "4" and attack == false then
 		hum.WalkSpeed = 8
 		Speed = 8
-		kan.Pitch = 0.6
-		kan.SoundId = "rbxassetid://8879155640"
+		kan.Pitch = 0.65
+		kan.SoundId = getsynasset("Exenus/Music/NepV4.mp3")
+        kan.TimePosition = 52
 		BanishMode = 5
 			
 		imgl2b.ImageColor3 = Color3.new(0, 0, 0)
@@ -7815,6 +7847,7 @@ end
 		Speed = 35
 		kan.Pitch = 0.8
 		kan.SoundId = "rbxassetid://9046863579"
+        kan.TimePosition = 0
 		BanishMode = 7
 			
 		imgl2b.ImageColor3 = Color3.new(0.2, 0.9, 1)
@@ -7896,7 +7929,7 @@ end
 	elseif k == "l" and muter == true then
 		muter = false
 		if not NoSound then
-			kan.Volume = 1.25
+			kan.Volume = 0.5
 		end
 	end
 end)
@@ -7921,7 +7954,7 @@ while true do
 			kan.Volume = ORVOL
 		end
 	else
-		kan.Volume = 6
+		kan.Volume = 1
 	end
 
 	sine = sine + change
