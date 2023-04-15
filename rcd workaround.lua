@@ -983,10 +983,6 @@ if Global.CameraMovement then
     local UserInputService = game:GetService("UserInputService")
     while true do
 	wait(0.5)
-        if UserInputService.MouseBehavior == Enum.MouseBehavior.LockCenter then
-            game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
-        else
-            game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character:WaitForChild("Head")
-        end
+        game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character:WaitForChild("Head")
     end
 end
