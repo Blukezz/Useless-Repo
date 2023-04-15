@@ -62,11 +62,25 @@ local CameraMovementToggle = Reanimation:CreateToggle({
 		end
 	end,
  })
+ local NoclipValue = false
+ local NoclipToggle = Reanimation:CreateToggle({
+	Name = "Noclip",
+	CurrentValue = false,
+	Flag = "Corn1",
+	Callback = function(Value)
+		if Value == true then
+			NoclipValue = true
+		else
+			NoclipValue = false
+		end
+	end,
+ })
 local Reanimate = Reanimation:CreateButton({
 	Name = "Reanimate",
 	Callback = function()
 		local Global = getgenv and getgenv() or shared
 		Global.CameraMovement = CameraMovementValue
+		Global.Noclip = NoclipValue
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Blukezz/Randomshit/main/unbrella%20fling.lua", true))()
 	end,
 })
