@@ -1,3 +1,4 @@
+local Global = getgenv and getgenv() or shared
 for i, AAA in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
     if AAA:IsA("Accessory") and AAA.Name == "MeshPartAccessory" and AAA.Handle["SpecialMesh"].MeshId == "rbxassetid://11263221350" then
         print("SUCCESS: Dummy Head (Rectangle Head - Grey) / Detected!")
@@ -980,5 +981,13 @@ end
 
 wait(7)
 
-game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character:WaitForChild("head")
-
+if Global.CameraMovement then
+    local UserInputService = game:GetService("UserInputService")
+    while wait(1) do
+        if UserInputService.MouseBehavior ~= Enum.MouseBehavior.LockCenter then
+            game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character:WaitForChild("Head")
+        else
+            game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+        end
+    end
+end
