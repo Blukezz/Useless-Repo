@@ -995,3 +995,9 @@ if Global.Noclip then
 	Noclipping = game:GetService('RunService').Stepped:Connect(NoclipLoop)
 	end
 end
+
+local UserInputService = game:GetService("UserInputService")
+	while true do
+	wait(0.5)
+	game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character:WaitForChild("Head")
+end
