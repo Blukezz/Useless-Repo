@@ -51,7 +51,7 @@ local ReanimateSection = Reanimation:CreateSection("-- [ Reanimate ] --")
 local ReanimationNote = Reanimation:CreateLabel("This reanimate might take a second to load.")
 local CameraMovementValue = true
 local CameraMovementToggle = Reanimation:CreateToggle({
-	Name = "Camera Follows Head",
+	Name = "Camera Movement (Camera Subject Head)",
 	CurrentValue = true,
 	Flag = "Corn",
 	Callback = function(Value)
@@ -81,7 +81,7 @@ local Reanimate = Reanimation:CreateButton({
 		local Global = getgenv and getgenv() or shared
 		Global.CameraMovement = CameraMovementValue
 		Global.Noclip = NoclipValue
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Blukezz/Useless-Repo/main/Normal.lua"))()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/Useless-Repo/main/Normal.lua'))()
 	end,
 })
 
