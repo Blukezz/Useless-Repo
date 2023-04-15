@@ -1,1 +1,1 @@
-Hello skid why the fuck are u here?
+why the fuck are u here?
