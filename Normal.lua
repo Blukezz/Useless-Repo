@@ -994,6 +994,7 @@ if Global.Noclip then
 	end
 	Noclipping = game:GetService('RunService').Stepped:Connect(NoclipLoop)
 end
+end
 
 if Global.CameraMovement then
     local UserInputService = game:GetService("UserInputService")
