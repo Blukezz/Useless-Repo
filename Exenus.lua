@@ -34,12 +34,13 @@ local Note = Welcome:CreateParagraph({
 	Content = "Hello! Welcome to one of only hubs that actually still works!"
 })
 local HatListSection = Welcome:CreateSection("-- [ Required Hats ] --")
-local Hat = Welcome:CreateLabel("Vans Black White Checkerboard Umbrella (Search on yt to find out how to get)")
+local Hat = Welcome:CreateLabel("Vans Black White Checkerboard Umbrella (Search on yt to get)")
 local Hat1 = Welcome:CreateLabel("Roblox Girl Hair")
 local Hat2 = Welcome:CreateLabel("Lavender Updo")
 local Hat3 = Welcome:CreateLabel("Brown Hair")
 local Hat4 = Welcome:CreateLabel("Red Roblox Cap")
 local Hat5 = Welcome:CreateLabel("Chestnut Bun")
+
 
 ----
 
@@ -48,16 +49,45 @@ local Reanimation = Window:CreateTab("Reanimate")
 local ReanimateSection = Reanimation:CreateSection("-- [ Reanimate ] --")
 
 local ReanimationNote = Reanimation:CreateLabel("This reanimate might take a second to load.")
+local CameraMovementValue = true
+local CameraMovementToggle = Reanimation:CreateToggle({
+	Name = "Camera Follows Head",
+	CurrentValue = true,
+	Flag = "Corn",
+	Callback = function(Value)
+		if Value == true then
+			CameraMovementValue = true
+		else
+			CameraMovementValue = false
+		end
+	end,
+ })
 local Reanimate = Reanimation:CreateButton({
 	Name = "Reanimate",
 	Callback = function()
+		local Global = getgenv and getgenv() or shared
+		Global.CameraMovement = CameraMovementValue
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Blukezz/Randomshit/main/unbrella%20fling.lua", true))()
 	end,
 })
 
+
 ----
 
 local Scripts = Window:CreateTab("Scripts")
+
+local Rejoin = Scripts:CreateButton({
+	Name = "Stop Script (Rejoin)",
+	Callback = function()
+		if #game.Players:GetPlayers() <= 1 then
+			LocalPlayer:Kick("Rejoining..")
+			wait()
+			game:GetService('TeleportService'):Teleport(game.PlaceId, LocalPlayer)
+		else
+			game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
+		end
+	end,
+})
 
 local NoHatsSection = Scripts:CreateSection("-- [ No Hats ] --")
 local Gale = Scripts:CreateButton({
@@ -134,6 +164,10 @@ local AbyssEye = Scripts:CreateButton({
 ----
 
 local Changelogs = Window:CreateTab("Changelogs")
+local Update4 = Changelogs:CreateSection("4/15/23")
+local U4Change = Changelogs:CreateLabel("[ + ] Added stop script button.")
+local U4Change1 = Changelogs:CreateLabel("[ + ] Added camera that follows the head.")
+local U4Change2 = Changelogs:CreateLabel("[ + ] Added options for reanimating.")
 local Update3 = Changelogs:CreateSection("4/8/23")
 local U3Change = Changelogs:CreateLabel("[ + ] Added chips.")
 local U3Change1 = Changelogs:CreateLabel("[ + ] Modified the reanimate.")
