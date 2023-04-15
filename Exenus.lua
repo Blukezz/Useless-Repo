@@ -62,7 +62,6 @@ local ReanimationNote = Reanimation:CreateLabel("This reanimate might take a sec
 		end
 	end,
  })
-local ReanimateSection1 = Reanimation:CreateSection("            ")
 local Reanimate = Reanimation:CreateButton({
 	Name = "Reanimate",
 	Callback = function()
