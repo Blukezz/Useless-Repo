@@ -979,15 +979,14 @@ for i,v in pairs (char:GetChildren()) do
 	end
 end
 
-wait(7)
-
 if Global.CameraMovement then
     local UserInputService = game:GetService("UserInputService")
-    while wait(1) do
-        if UserInputService.MouseBehavior ~= Enum.MouseBehavior.LockCenter then
-            game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character:WaitForChild("Head")
-        else
+    while true do
+	wait(0.5)
+        if UserInputService.MouseBehavior == Enum.MouseBehavior.LockCenter then
             game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+        else
+            game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character:WaitForChild("Head")
         end
     end
 end
