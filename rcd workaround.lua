@@ -995,6 +995,7 @@ if Global.Noclip then
 		end
 	end
 	Noclipping = game:GetService('RunService').Stepped:Connect(NoclipLoop)
+    end
 end
 
 if Global.CameraMovement then
